@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace ApiProjetoVagas.Controllers
+namespace ApiProjetocandidato.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -11,17 +11,17 @@ namespace ApiProjetoVagas.Controllers
         private List<Candidato> PegarDados()
         {
             // Criar uma lista de Alunos vazia para receber os dados do arquivo
-            List<Candidato> listaVagas = new();
+            List<Candidato> listacandidato = new();
 
             try
             {
                 // Pegar arquivo c:\temp\alunos.json e trazer para a memória
-                string dadosArquivo = System.IO.File.ReadAllText("c:\\temp\\vagas.json");
-                listaVagas = System.Text.Json.JsonSerializer.Deserialize<List<Candidato>>(dadosArquivo);
+                string dadosArquivo = System.IO.File.ReadAllText("c:\\temp\\candidato.json");
+                listacandidato = System.Text.Json.JsonSerializer.Deserialize<List<Candidato>>(dadosArquivo);
             }
             catch { }
 
-            return listaVagas;
+            return listacandidato;
         }
         [HttpPost]
         public IActionResult Logar(Logar dados)
