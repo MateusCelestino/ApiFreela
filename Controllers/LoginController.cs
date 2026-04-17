@@ -24,14 +24,14 @@ namespace ApiProjetocandidato.Controllers
             return listacandidato;
         }
         [HttpPost]
-        public IActionResult Logar(Logar dados)
+        public ActionResult<Logar> Logar(Logar dados)
 
         {
             var listaUsuario = PegarDados();
             var usuario = listaUsuario.Where(item => item.Email == dados.Email && item.Senha == dados.Senha).FirstOrDefault();
             if (usuario != null)
             {
-                return Ok();
+                return Ok(usuario);
             }
             return Unauthorized();
         }
